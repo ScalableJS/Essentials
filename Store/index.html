@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=scrip, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="src/Store.js"></script>
+<script src="src/ObjStore.js"></script>
+<script>
+    console.clear();
+    delete localStorage['Test'];
+    //Create storage
+    var store = new ObjStore('StoreName');
+    store.set(function () {
+        this['A'] = 1;
+        this['B'] = 2;
+        this['C'] = 3;
+    });
+
+    console.log('get', store.get());
+</script>
+</body>
+</html>
