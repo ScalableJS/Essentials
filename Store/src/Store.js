@@ -4,7 +4,6 @@ var Store = function (STORE_NAME, TYPE) {
         return toString.call(TYPE()) === toString.call(obj);
     };
 
-
     this.get = function () {
         var out,
             str = localStorage.getItem(STORE_NAME);
@@ -22,6 +21,7 @@ var Store = function (STORE_NAME, TYPE) {
 
         return out;
     };
+
     this.set = function (callback) {
         var obj = this.get();
         callback.call(obj);

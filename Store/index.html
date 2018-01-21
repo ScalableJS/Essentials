@@ -11,16 +11,22 @@
 <script src="src/ObjStore.js"></script>
 <script>
     console.clear();
-    delete localStorage['Test'];
+    delete localStorage['StoreName'];
     //Create storage
     var store = new ObjStore('StoreName');
     store.set(function () {
-        this['A'] = 1;
-        this['B'] = 2;
-        this['C'] = 3;
+        for (var i = 0; i < 50; i++) {
+            var rnd = Math.random();
+            this[rnd.toString(36)] = (rnd * 1e3) | 0;
+        }
     });
 
     console.log('get', store.get());
+
+    var outReduce = store.reduce(function (prev, key) {
+        return this[prev] > this[key] ? prev : key;
+    });
+    console.log(outReduce, store.get()[outReduce])
 </script>
 </body>
 </html>
