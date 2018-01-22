@@ -3,9 +3,9 @@ var ObjStore = function (STORE_NAME) {
 
     this.each = function (callback) {
         var object = this.get();
-        for (var name in obj) {
-            if (callback.call(object[name], name, object[name]) === false) break;
-        }
+		for (var name in object) if (object.hasOwnProperty(name)) {
+			if (callback.call(object[name], name, object[name]) === false) break;
+		}
     };
 
     this.reduce = function (callback) {
